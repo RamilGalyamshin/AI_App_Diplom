@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codex - Your AI</title>
+  <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="sidebar" style="display: block;">
+      <div class="sidebar-header">
+        <h3>Codex AI</h3>
+      </div>
+      <ul class="navbar">
+        <li><a href="templates.html" id="createTemplatesLink">Create Templates</a></li>
+        <li><a href="index.html" id="mainLink">Main</a></li>
+        <li><a href="#" id="quitLink">Quit</a></li>
+      </ul>
+      <div id="sessionList">
+        <!-- Здесь будут отображаться ссылки на сессии чатов -->
+      </div>
+    </div>
+    <div id="main-content" style="display: block;">
+      <div id="chat_container">
+        <form id="chatForm" style="display: block;">
+          <div class="input-group">
+            <textarea name="prompt" rows="1" cols="1" placeholder="Ask codex..."></textarea>
+            <select id="templateSelect"></select>
+            <button type="button" id="selectTemplateBtn">Choose</button>
+          </div>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="./scripts/script.js"></script>
+</body>
+</html>

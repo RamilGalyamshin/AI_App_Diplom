@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login or Register</title>
+  <link rel="stylesheet" href="./styles/login.css">
+</head>
+<body>
+  <div id="app">
+    <form id="loginForm" style="display: none;">
+      <input type="text" name="login" placeholder="Login">
+      <input type="password" name="password" placeholder="Password">
+      <button type="submit">Login</button>
+      <p>Not registered? <a href="#" id="showRegister">Create an account</a></p>
+    </form>
+    <form id="registerForm">
+      <input type="text" name="login" placeholder="Register Login">
+      <input type="password" name="password" placeholder="Register Password">
+      <button type="submit">Register</button>
+      <p>Already registered? <a href="#" id="showLogin">Sign in</a></p>
+    </form>
+  </div>
+  <script src="./scripts/login.js"></script>
+</body>
+</html>

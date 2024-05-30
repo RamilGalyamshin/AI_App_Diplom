@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="./styles/template.css">
+</head>
+<body>
+    <div id="app">
+        <div id="sidebar">
+          <div class="sidebar-header">
+            <h3>Codex AI</h3>
+          </div>
+          <ul class="navbar">
+            <li><a href="#" id="quitLink">Quit</a></li>
+          </ul>
+        </div>
+        <div id="main-content">
+          <table id="usersTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Login</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+  <!-- Модальное окно для редактирования пользователя -->
+  <div id="editUserModal" class="modal">
+    <div class="modal-content">
+      <span id="editUserClose" class="close">&times;</span>
+      <form id="editUserForm">
+        <label for="editLogin">Login:</label>
+        <input type="text" id="editLogin" required>
+        
+        <label for="editPassword">Password (optional):</label>
+        <input type="password" id="editPassword">
+        
+        <label for="editRole">Role:</label>
+        <select id="editRole">
+          <option value="1">User</option>
+          <option value="2">Admin</option>
+        </select>
+        
+        <button type="submit" class="save-btn">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Модальное окно для просмотра шаблонов -->
+    <div id="viewTemplatesModal" class="modal">
+    <div class="modal-content">
+      <span id="viewTemplatesClose" class="close">&times;</span>
+      <input type="text" id="searchTemplatesInput" placeholder="Search templates...">
+      <ul id="userTemplatesList"></ul>
+    </div>
+  </div>
+
+  <script src="./scripts/admin.js"></script>
+</body>
+</html>

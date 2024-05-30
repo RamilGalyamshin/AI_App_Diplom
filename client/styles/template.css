@@ -1,0 +1,306 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Alegreya Sans", sans-serif;
+  
+}
+ h1{
+  color: #fff;
+ }
+body {
+  background: #343541;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Alegreya Sans", sans-serif;
+
+}
+
+#app {
+  min-height: 100vh; /* Минимальная высота на весь видимый экран */
+  background: #343541;
+  display: flex;
+  align-items: stretch; /* Растягивание дочерних элементов на всю высоту */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#temp ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#temp li {
+  margin-bottom: 10px; /* Отступ между элементами списка */
+}
+
+/* Стили для списка шаблонов */
+#templateList {
+  list-style: none;
+  margin-bottom: 20px;
+  padding: 0;
+  width: 100%;
+  max-width: 800px;
+  min-height: 100px; /* Добавляем минимальную высоту */
+}
+
+#templateList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#templateList li .template-text {
+  background-color: #42434b;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  flex-grow: 1;
+  word-break: break-word; /* Добавлено для переноса длинных слов */
+}
+
+/* Стили для кнопок внутри списка шаблонов */
+#templateList li .buttons-container {
+  display: flex;
+  gap: 5px;
+}
+
+/* Стили для кнопок */
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: #4CAF50;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin: 3px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Стили для модального окна */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 50%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#templateForm {
+
+  flex-direction: column;
+}
+
+#templateForm label {
+  margin-bottom: 10px;
+}
+
+#templateForm input[type="text"],
+#templateForm textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+#templateForm .button-group {
+  display: flex;
+  justify-content: space-between; /* Равномерно распределяем кнопки по ширине формы */
+}
+
+#templateForm button[type="submit"],
+#templateForm button[type="button"] {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 35%; /* Устанавливаем ширину кнопок примерно 48%, чтобы учесть отступ между ними */
+}
+
+#templateForm button[type="submit"] {
+  background-color: #4CAF50;
+}
+
+#templateForm button[type="button"] {
+  background-color: #e31717;
+}
+
+#templateForm button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+#templateForm button[type="button"]:hover {
+  background-color: #b81919;
+}
+
+#searchInput {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #343541;
+}
+
+#loginForm input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #40414F;
+  color: #fff;
+  font-size: 16px;
+  width: 300px;
+  max-width: 80%;
+}
+
+#loginForm button {
+  background-color: #10a37f;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#loginForm button:hover {
+  background-color: #0c8f6f;
+}
+
+#sidebar {
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex: 0 0 auto; /* Фиксированная ширина */
+  flex-direction: column; /* Расположение элементов в столбце */
+}
+
+.sidebar-header {
+  padding: 20px;
+  text-align: center;
+}
+
+.navbar {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar li {
+  padding: 10px 0;
+}
+
+.navbar a {
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #555;
+}
+
+/* Стили для основного контейнера */
+#main-content {
+  
+  flex-grow: 1;
+  padding: 20px;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center; /* Центрирование содержимого по горизонтали */
+}
+
+#chat_container {
+  display: flex;
+  justify-content: center; /* Выравнивание влево */
+}
+
+#top-controls {
+  display: flex;
+  position: sticky; /* Make it sticky */
+  top: 0; /* Position it at the top */
+  width: 100%; /* Take the full width of the container */
+  background-color: #343541; /* Background color to match the rest of the page */
+  padding: 10px; /* Add some padding */
+  justify-content: center
+  
+}
+/* Стили для основного контейнера */
+#chat_container {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+#addTemplateBtn {
+  align-self: flex-start; /* Выравнивание кнопки Add Template по левому краю */
+  margin: 10px;
+}
+.templateForm_buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.main-content_Title{
+  display: flex;
+  justify-content: space-between;
+}

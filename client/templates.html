@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Templates</title>
+  <link rel="stylesheet" href="./styles/template.css">
+</head>
+<body>
+  <div id="app">
+    <div id="sidebar">
+      <div class="sidebar-header">
+        <h3>Codex AI</h3>
+      </div>
+      <ul class="navbar">
+        <li><a href="index.html" id="mainLink">Main</a></li>
+        <li><a href="templates.html" id="createTemplatesLink">Create Templates</a></li>
+        <li><a href="#" id="quitLink">Quit</a></li>
+      </ul>
+    </div>
+    <div id="main-content">
+      <div id="top-controls">
+        <input type="text" id="searchInput" placeholder="Search templates...">
+        <button id="addTemplateBtn">Add Template</button>
+      </div>
+      <ul id="templateList">
+        <!-- Templates will be rendered here -->
+      </ul>
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <form id="templateForm">
+            <label for="nameInput">Name:</label>
+            <input type="text" id="nameInput" required>
+            <label for="titleInput">Title:</label>
+            <input type="text" id="titleInput" required>
+            <div class="button-group">
+              <button type="submit" id="saveTemplateBtn">Save</button>
+              <button type="button" id="cancelBtn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./scripts/templates.js"></script>
+</body>
+</html>
