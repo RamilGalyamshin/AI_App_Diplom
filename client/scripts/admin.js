@@ -66,7 +66,7 @@ const openDeleteUserModal = async (userId) => {
   }
 };
 
-// Открытие модального окна для просмотра шаблонов пользователя
+// Open modal to view user's templates
 const openViewTemplatesModal = async (userId) => {
   currentUserId = userId;
   try {
@@ -92,7 +92,7 @@ const renderTemplates = (templates) => {
   });
 };
 
-// Открытие модального окна для редактирования шаблона
+// Open modal to edit template
 const openEditTemplateModal = (templateId, name, title) => {
   const editTemplateModal = document.createElement('div');
   editTemplateModal.classList.add('modal');
@@ -138,7 +138,7 @@ const openEditTemplateModal = (templateId, name, title) => {
   editTemplateModal.style.display = 'block';
 };
 
-// Удаление шаблона
+// Delete template
 const deleteTemplate = async (templateId) => {
   if (confirm('Are you sure you want to delete this template?')) {
     try {
