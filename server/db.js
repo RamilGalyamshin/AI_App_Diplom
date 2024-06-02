@@ -103,6 +103,8 @@ export const createChatSession = async (userId) => {
   }
 };
 
+
+
 export const saveChatHistory = async (sessionId, userId, message, isAI) => {
   try {
     // Attempt to insert the new record
@@ -198,6 +200,55 @@ export const deleteTemplateForUser = async (templateId) => {
     await executeQuery(deleteQuery);
   } catch (err) {
     console.error('Error deleting template:', err);
+    throw err;
+  }
+};
+
+// Добавленные функции для удаления данных пользователя
+export const deleteUserChatHistory = async (userId) => {
+  try {
+    await executeQuery(
+      `DELETE FROM ChatHistory WHERE UserId = @UserId`,
+      { UserId: userId }
+    );
+  } catch (err) {
+    console.error('Error deleting chat history:', err);
+    throw err;
+  }
+};
+
+export const deleteUserChatSessions = async (userId) => {
+  try {
+    await executeQuery(
+      `DELETE FROM ChatSessions WHERE UserId = @UserId`,
+      { UserId: userId }
+    );
+  } catch (err) {
+    console.error('Error deleting chat sessions:', err);
+    throw err;
+  }
+};
+
+export const deleteUserTemplates = async (userId) => {
+  try {
+    const templates = await getTemplatesByUser(userId);
+    for (const template of templates) {
+      await deleteTemplateForUser(template.Id);
+    }
+  } catch (err) {
+    console.error('Error deleting user templates:', err);
+    throw err;
+  }
+};
+
+export const deleteUser = async (userId) => {
+  try {
+    await executeQuery(
+      `DELETE FROM Users WHERE Id = @UserId`,
+      { UserId: userId }
+    );
+  } catch (err) {
+    console.error('Error deleting user:', err);
     throw err;
   }
 };

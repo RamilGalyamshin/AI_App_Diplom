@@ -14,6 +14,10 @@ import {
   saveChatHistory,
   getChatSessions,
   getChatHistory,
+  deleteUserChatHistory,
+  deleteUserChatSessions,
+  deleteUserTemplates,
+  deleteUser
 } from './db.js';
 import { proxy } from './proxy-settings.js'; // Импорт настроек прокси
 
@@ -30,6 +34,21 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+
+
+// Функция для удаления данных пользователя
+const deleteUserData = async (userId) => {
+  try {
+    await deleteUserChatHistory(userId);
+    await deleteUserChatSessions(userId);
+    await deleteUserTemplates(userId);
+    await deleteUser(userId);
+  } catch (error) {
+    console.error('Error deleting user data:', error);
+    throw error;
+  }
+};
+
 
 // Создание агента прокси
 const httpsAgent = new HttpsProxyAgent(proxy);
@@ -177,14 +196,13 @@ app.put('/api/users/:id', async (req, res) => {
 app.delete('/api/users/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    await executeQuery('DELETE FROM Users WHERE Id = @Id', { Id: id });
+    await deleteUserData(id);
     res.sendStatus(204);
   } catch (error) {
     console.error('Error deleting user:', error);
     res.status(500).json({ error: 'Error deleting user' });
   }
 });
-
 app.get('/api/users/:id/templates', async (req, res) => {
   const { id } = req.params;
   try {
