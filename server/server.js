@@ -67,7 +67,7 @@ const fetchWithProxy = async (url, options) => {
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   fetch: fetchWithProxy,
-});
+})
 
 app.get('/', (req, res) => {
   res.status(200).send({ message: 'Hello from CodeX!' });
@@ -352,25 +352,21 @@ app.post('/api/chat-history', async (req, res) => {
 app.post('/', async (req, res) => {
   const { prompt, userId, sessionId } = req.body;
   try {
-    const response = await axios.post('https://api.openai.com/v1/completions', {
-      model: "gpt-3.5-turbo-instruct",
-      prompt: prompt,
-      temperature: 0.7,
-      max_tokens: 3900,
+    const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+      model: "gpt-4", 
+      messages: [{ role: "system", content: "You are a helpful assistant." }, { role: "user", content: prompt }],
+      temperature: 1,
+      max_tokens: 8000, 
     }, { httpsAgent, headers: { 'Authorization': `Bearer ${openai.apiKey}` } });
-
-    const botResponse = response.data.choices[0].text.trim();
-
+    const botResponse = response.data.choices[0].message.content.trim();
     await saveChatHistory(sessionId, userId, prompt, false);
     await saveChatHistory(sessionId, userId, botResponse, true);
-
     res.status(200).send({ bot: botResponse });
   } catch (error) {
     console.error('Error processing request:', error);
-    res.status(500).send(error || 'Something went wrong');
+    res.status(500).send(error.response.data || 'Something went wrong');
   }
 });
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on http://localhost:${PORT}`));

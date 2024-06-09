@@ -102,8 +102,6 @@ const registerUser = async (login, password) => {
       body: JSON.stringify({ login, password })
     });
     if (response.ok) {
-      const { userID } = await response.json();
-      alert(`User created with ID: ${userID}`);
       window.location.href = 'index.html';
     } else {
       const { message } = await response.json();
